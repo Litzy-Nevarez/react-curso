@@ -1,8 +1,9 @@
 import { combinations } from "mathjs";
 import React, { useState } from "react";
+import './../css/TareaFormulario.css';
 import { v4 as uuidv4 } from "uuid";
 
-function TareaFormulario ({ props }) {
+function TareaFormulario ({ onSubmit }) {
 
     const [input, setInput] = useState("");
 
@@ -19,7 +20,7 @@ function TareaFormulario ({ props }) {
             completada: false
         }
 
-        props.onSubmit(tareaNueva)
+        onSubmit(tareaNueva);
     }
 
     return (
@@ -29,6 +30,7 @@ function TareaFormulario ({ props }) {
                 type="text" 
                 placeholder="Escribe una nueva tarea..."
                 name="texto"
+                value={input}
                 onChange={manejarCambio}
             />
             <button className="tarea-boton">Agregar</button>
